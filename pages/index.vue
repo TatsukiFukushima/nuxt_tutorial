@@ -1,72 +1,64 @@
 <template>
-  <div class="container">
+  <section class="container">
+    <h1>Todo App</h1>
+    <p><input type="text" name="content" v-model="content" /></p>
     <div>
-      <logo />
-      <h1 class="title">
-        nuxt_tutorial
-      </h1>
-      <h2 class="subtitle">
-        My first-rate Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <button @click="insert">save</button>
+      <button @click="find">find</button>
     </div>
-  </div>
+    <ul>
+      <li v-for="(todo, index) in display_todos" :key="index">
+        <span class="todo__content">{{ todo.content }}</span><br>
+        <span class="todo__created">{{ todo.created }}</span><span class="todo__remove" @click="remove(todo)">delete</span>
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import {mapState} from 'vuex';
 
 export default {
-  components: {
-    Logo
+  data: function() {
+    return {
+      content: '',
+      search_word: '',
+      find_flg: false
+    }
+  },
+  computed: {
+    ...mapState(['todos']),
+    display_todos: function() {
+      if(this.find_flg) {
+        var arr = [];
+        var data = this.todos;
+        data.forEach(element => {
+          if(element.content.toLowerCase() == this.search_word.toLowerCase()) {
+            arr.push(element);
+          }
+        });
+        return arr;
+      } else {
+        return this.todos;
+      }
+    }
+  },
+  methods: {
+    insert: function() {
+      this.$store.commit('insert', {content: this.content});
+      this.content = '';
+      this.find_flg = false;
+    },
+    find: function() {
+      this.search_word = this.content
+      this.find_flg = this.content != '';
+    },
+    remove: function(todo) {
+      this.$store.commit('remove', todo)
+    }
   }
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>

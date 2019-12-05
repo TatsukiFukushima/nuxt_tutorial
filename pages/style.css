@@ -1,0 +1,60 @@
+.container {
+    width: 500px;
+    margin: 170px auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32pt;
+}
+
+input {
+    width: 500px;
+    margin: 20px 0px;
+    padding: 8px 4px;
+    font-size: 16pt;
+    border-radius: 5px;
+}
+
+button {
+    margin: 0 10px;
+    padding: 4px 8px;
+    font-size: 10pt;
+    display: inline;
+}
+
+ul {
+    margin-top: 20px;
+    padding: 0;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    text-align: left;
+    padding: 7px 15px;
+    font-size: 16pt;
+    width: 500px;
+    border: 1px solid #ddd;
+}
+
+span {
+    margin: 0 5px;
+}
+
+.todo__created, .todo__remove {
+    margin-right: 30px;
+    font-size: 12px;
+    color: #666;
+}
+
+.todo__remove {
+    font-weight: bold;
+    font-size: 12px;
+    color: #a66;
+    cursor: pointer;
+}
+
+.todo__remove:hover {
+    color: #733;
+}
