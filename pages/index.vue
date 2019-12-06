@@ -48,7 +48,7 @@ export default {
       this.content = '';
     },
     find: function() {
-      this.find_flg = this.content != '';
+      this.find_flg = true;
     },
     set_flg: function() {
       if(this.find_flg) {
@@ -62,6 +62,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>
