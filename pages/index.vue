@@ -22,7 +22,6 @@ export default {
   data: function() {
     return {
       content: '',
-      search_word: '',
       find_flg: false
     }
   },
@@ -33,7 +32,7 @@ export default {
         var arr = [];
         var data = this.todos;
         data.forEach(element => {
-          if(element.content.toLowerCase() == this.search_word.toLowerCase()) {
+          if(element.content.toLowerCase() == this.content.toLowerCase()) {
             arr.push(element);
           }
         });
@@ -50,7 +49,6 @@ export default {
       this.find_flg = false;
     },
     find: function() {
-      this.search_word = this.content
       this.find_flg = this.content != '';
     },
     remove: function(todo) {
