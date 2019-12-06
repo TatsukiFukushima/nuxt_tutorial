@@ -25,7 +25,7 @@ const createStore = () => {
                 for(let i = 0; i < state.todos.length; i++) {
                     const ob = state.todos[i];
                     if(ob.content == obj.content && ob.created == obj.created) {
-                        alert('remove ' + '"' + ob.content + '"');
+                        alert('次の項目を削除します: ' + '"' + ob.content + '"');
                         state.todos.splice(i, 1);
                         return;
                     }

@@ -1,10 +1,10 @@
 <template>
   <section class="container">
     <h1>Todo App</h1>
-    <p><input type="text" name="content" v-model="content" /></p>
     <div>
-      <button @click="insert">save</button>
-      <button @click="find">find</button>
+      <input type="text" name="content" v-model="content" />
+      <button @click="insert"><i class="fas fa-plus"></i></button>
+      <button @click="find"><i class="fas fa-search"></i></button>
     </div>
     <ul>
       <li v-for="(todo, index) in display_todos" :key="index">

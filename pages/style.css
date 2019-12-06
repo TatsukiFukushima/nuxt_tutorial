@@ -1,26 +1,42 @@
 .container {
-    width: 500px;
-    margin: 170px auto;
+    width: 700px;
+    margin: 100px auto;
     text-align: center;
 }
 
 h1 {
     font-size: 32pt;
+    color: #004d3d;
 }
 
 input {
-    width: 500px;
+    width: 593px;
     margin: 20px 0px;
-    padding: 8px 4px;
+    padding: 8px 24px;
     font-size: 16pt;
-    border-radius: 5px;
+    background-color: #f7f7f7;
+    border-radius: 24px;
+    display: inline;
+}
+
+input:focus {
+    outline: none;
 }
 
 button {
-    margin: 0 10px;
-    padding: 4px 8px;
-    font-size: 10pt;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+    background-color: #004d3d;
+    font-size: 16pt;
+    border-radius: 24px;
     display: inline;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #ddd;
+    background-color: #003c2c;
 }
 
 ul {
@@ -34,7 +50,7 @@ li {
     text-align: left;
     padding: 7px 15px;
     font-size: 16pt;
-    width: 500px;
+    width: 700px;
     border: 1px solid #ddd;
 }
 
