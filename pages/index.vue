@@ -2,7 +2,7 @@
   <section class="container">
     <h1>Todo App</h1>
     <div>
-      <input type="text" name="content" v-model="content" />
+      <input type="text" name="content" v-model="content" @focus="set_flg"/>
       <button @click="insert"><i class="fas fa-plus"></i></button>
       <button @click="find"><i class="fas fa-search"></i></button>
     </div>
@@ -22,7 +22,6 @@ export default {
   data: function() {
     return {
       content: '',
-      search_word: '',
       find_flg: false
     }
   },
@@ -33,7 +32,7 @@ export default {
         var arr = [];
         var data = this.todos;
         data.forEach(element => {
-          if(element.content.toLowerCase() == this.search_word.toLowerCase()) {
+          if(element.content.toLowerCase() == this.content.toLowerCase()) {
             arr.push(element);
           }
         });
@@ -47,11 +46,15 @@ export default {
     insert: function() {
       this.$store.commit('insert', {content: this.content});
       this.content = '';
-      this.find_flg = false;
     },
     find: function() {
-      this.search_word = this.content
-      this.find_flg = this.content != '';
+      this.find_flg = true;
+    },
+    set_flg: function() {
+      if(this.find_flg) {
+        this.find_flg = false;
+        this.content = '';
+      }
     },
     remove: function(todo) {
       this.$store.commit('remove', todo)
@@ -59,6 +62,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>
